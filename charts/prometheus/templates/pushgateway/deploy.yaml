@@ -60,6 +60,9 @@ spec:
             {{- else }}
               path: /-/healthy
             {{- end }}
+            {{- if .Values.pushgateway.httpProbesHeaders }}
+              httpHeaders: {{ toYaml .Values.pushgateway.httpProbesHeaders }}
+            {{- end }}
               port: 9091
             initialDelaySeconds: 10
             timeoutSeconds: 10
@@ -70,7 +73,11 @@ spec:
             {{- else }}
               path: /-/ready
             {{- end }}
+            {{- if .Values.pushgateway.httpProbesHeaders }}
+              httpHeaders: {{ toYaml .Values.pushgateway.httpProbesHeaders }}
+            {{- end }}
               port: 9091
+              
             initialDelaySeconds: 10
             timeoutSeconds: 10
           resources:
