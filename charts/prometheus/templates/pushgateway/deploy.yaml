@@ -61,7 +61,7 @@ spec:
               path: /-/healthy
             {{- end }}
             {{- if .Values.pushgateway.httpProbesHeaders }}
-              httpHeaders: {{ toYaml .Values.pushgateway.httpProbesHeaders }}
+              httpHeaders: {{ toYaml .Values.pushgateway.httpProbesHeaders | nindent 14 }}
             {{- end }}
               port: 9091
             initialDelaySeconds: 10
@@ -74,7 +74,7 @@ spec:
               path: /-/ready
             {{- end }}
             {{- if .Values.pushgateway.httpProbesHeaders }}
-              httpHeaders: {{ toYaml .Values.pushgateway.httpProbesHeaders }}
+              httpHeaders: {{ toYaml .Values.pushgateway.httpProbesHeaders | nindent 14 }}
             {{- end }}
               port: 9091
               
